@@ -45,28 +45,100 @@ Design a database for patient management, appointments, medical records, and bil
    - Why you chose the entities and relationships.
    - How you modeled prerequisites or billing.
 
-# ER Diagram Submission - Student Name
+# ER Diagram Submission - Royce Niran George A
 
 ## Scenario Chosen:
-University / Hospital (choose one)
+University
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
+![Screenshot 2025-04-30 215030](https://github.com/user-attachments/assets/f1020dca-2f30-4690-b95e-5426b6241490)
+
 
 ## Entities and Attributes:
-- Entity1: Attributes
-- Entity2: Attributes
-...
+->University
+
+Attributes: uni_id, uni_name, location
+
+->Department
+
+Attributes: dept_id (PK), dept_name, uni_id (FK)
+
+->Program
+
+Attributes: prog_id (PK), prog_name, dept_id (FK)
+
+->Faculty
+
+Attributes: uni_id (FK)
+
+->Course
+
+Attributes: course_no (PK), course_name, credits
+
+->Student
+
+Attributes: reg_no (PK), name, DOB, ph_no, email
+
+->Enrollment
+
+Attributes: reg_no (FK), course_no (FK), date
 
 ## Relationships and Constraints:
-- Relationship1 (Cardinality, Participation)
-- Relationship2 (Cardinality, Participation)
-...
+
+$University — has → Department
+
+Cardinality: 1:N (One university has many departments)
+
+Participation: Total on department, partial on university
+
+
+$Department — offers → Program
+
+Cardinality: 1:N
+
+Participation: Total on program
+
+
+$Department — offers → Course
+
+Cardinality: 1:N
+
+Participation: Total on course
+
+
+$Department — includes → Faculty
+
+Cardinality: 1:N
+
+Participation: Partial on faculty
+
+
+
+$Student — enrolls in → Course (via Enrollment)
+
+Cardinality: M:N (resolved using Enrollment table)
+
+Participation: Partial on both
 
 ## Extension (Prerequisite / Billing):
-- Explain how you modeled prerequisites or billing.
+Prerequisite Modeling:
+
+The prerequisite relationship for courses is implied and can be modeled using a recursive relationship on the Course entity:
+
+Prerequisite(course_no, prereq_course_no)
+
+This indicates that course_no requires prereq_course_no as a prerequisite.
+
+Both attributes are foreign keys referring to the Course table.
 
 ## Design Choices:
-Brief explanation of why you chose certain entities, relationships, and assumptions
+Entities were chosen based on the core objects needed to represent a university system: universities, departments, programs, courses, students, and enrollments.
+
+Enrollment was created as a separate entity to capture the M:N relationship between students and courses with an extra attribute (date).
+
+Recursive relationship for prerequisites avoids cluttering the ER diagram while still supporting required functionality.
+
+Faculty and contact information were simplified for diagram clarity but can be extended in implementation.
 
 ## RESULT
+Successfully designed and explained an ER diagram for a university database with all required entities, relationships, and constraints including support for course prerequisites.
