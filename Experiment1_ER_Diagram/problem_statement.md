@@ -4,7 +4,7 @@
 To understand and apply the concepts of ER modeling by creating an ER diagram for a real-world application.
 
 ## 📚 Purpose:
-The purpose of this workshop is to gain hands-on experience in designing ER diagrams that visually represent the structure of a database including entities, relationships, attributes, and constraints.
+The purpose of this workshop is to gain hands-on experience in designing ER diagrams that visually represent the structure of a database including entities, relationships, attributes, and constraints. 
 
 ---
 
